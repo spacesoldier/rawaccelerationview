@@ -8,10 +8,26 @@
 <body>
 <div class="container">
 <div class="col-sm-12">
-<h1>HELLO</h1>
+<h1 id="raw_g">HELLO</h1>
 </div>
 </div>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
 
+$(document).ready(function(){
+	var listenSocket = new WebSocket("/ws/acceleration");
+	
+	listenSocket.onopen = function(event){
+		$("#raw_g").html("connected");
+	}
+	
+	listenSocket.onmessage = function (event) {
+		//data = JSON.parse(event.data);
+		$("#raw_g").html(event.data);
+	}
+});
+
+</script>
 </body>
 </html>
