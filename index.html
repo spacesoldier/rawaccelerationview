@@ -16,7 +16,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var listenSocket = new WebSocket("wss://192.168.88.247:1880/ws/acceleration");
+	var listenSocket = new WebSocket("ws://192.168.88.247:1880/ws/acceleration");
 	
 	listenSocket.onopen = function(event){
 		$("#raw_g").html("connected");
