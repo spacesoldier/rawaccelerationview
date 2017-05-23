@@ -38,12 +38,23 @@ $(document).ready(function(){
 	var listenSocket = new WebSocket("ws://192.168.88.247:1880/ws/acceleration");
 	
 	listenSocket.onopen = function(event){
-		$("#raw_g").html("connected");
+		$("#raw_g").html("_wait_");
 	}
 	
 	listenSocket.onmessage = function (event) {
 		//data = JSON.parse(event.data);
 		$("#raw_g").html(event.data);
+	}
+	
+	var listenMaxSocket = new WebSocket("ws://192.168.88.247:1880/ws/max-acceleration");
+	
+	listenMaxSocket.onopen = function(event){
+		$("#max_g").html("_wait_");
+	}
+	
+	listenMaxSocket.onmessage = function (event) {
+		//data = JSON.parse(event.data);
+		$("#max_g").html(event.data);
 	}
 });
 
